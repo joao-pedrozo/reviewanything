@@ -6,7 +6,7 @@
 [subrepo]
 	remote = git@github.com:joao-pedrozo/revieweverything-api.git
 	branch = master
-	commit = 09d1f41a03da348465ee957a49a7b2839df2241a
-	parent = 9f02f74c6576ccb2bcc0fc3ea8752826ce7eb074
+	commit = b5bdab22a263c067546553f2c2d54bf874727b6f
+	parent = 5ec4298011140e873edc488d396231be7be5d197
 	method = merge
 	cmdver = 0.4.3

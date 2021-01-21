@@ -9,6 +9,8 @@ const app = new Koa();
 
 app.listen(9000);
 
+initDB();
+
 app.on('error', (err) => {
     console.log(err)
 });
@@ -18,4 +20,3 @@ app.use(mount('/graphql', graphqlHTTP({
     graphiql: true
   })));
 
-initDB();

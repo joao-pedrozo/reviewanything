@@ -6,12 +6,7 @@ import mongoose, { Schema } from 'mongoose';
 */
 
 const ReviewSchema = new Schema({
-  title: String,
-  text: String,
-  by_user: String,
-  url: String,
-  overall: Number,
-  created_at: Date,
+  name: String,
 });
 
 export default mongoose.model('Review', ReviewSchema);
