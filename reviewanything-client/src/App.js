@@ -1,16 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-import { useQuery } from 'relay-hooks';
+import { useLazyLoadQuery, useQuery } from 'relay-hooks';
 import graphql from 'babel-plugin-relay/macro';
 
 function App() {
   const query = graphql`
-    review(id: "5ffb950068a611a459fa1e63"){
-      id
-      title
-      text
+    query reviewQuery($id: String){
+      review(id: $id){
+        _id
+        title
+        overall
+      }
     }
-  }
 `;
 
 const options = {
@@ -18,12 +19,16 @@ const options = {
   networkCacheConfig: undefined,
 }
 
-  const { data } = useQuery(query);
+const variables = {
+  id: "5fff8a86e8687eebfea83e04"
+}
 
+  const teste = useQuery(query, variables, options);
+console.log(teste);
   return (
     <div className="App">
       <h1>
-        {data}
+        {teste.data.review.title}
       </h1>
     </div>
   );

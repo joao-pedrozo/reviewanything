@@ -1,0 +1,35 @@
+schema {
+  query: RootQueryType
+  mutation: Mutation
+}
+
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+type Mutation {
+  addReview(title: String, text: String, by_user: String, overall: Int, url: String): Review
+}
+
+type Review {
+  _id: String
+  title: String
+  text: String
+  url: String
+  by_user: String
+  overall: Int
+  user: User
+}
+
+type RootQueryType {
+  review(id: String): Review
+  reviews: [Review]
+}
+
+type User {
+  _id: String
+  name: String
+}
+
