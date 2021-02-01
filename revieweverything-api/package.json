@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2 start server.js",
-    "dev:server": "nodemon --exec babel-node src/server.js"
+    "dev:server": "nodemon --exec babel-node src/server.js",
+    "commit": "git-cz"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,58 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "cz-conventional-changelog": "^3.3.0",
     "nodemon": "^2.0.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog",
+      "types": {
+        "feat": {
+          "description": "Uma nova funcionalidade",
+          "title": "Funcionalidades"
+        },
+        "fix": {
+          "description": "Uma correção de bug",
+          "title": "Correções de bugs"
+        },
+        "docs": {
+          "description": "Alteração de documentação",
+          "title": "Documentação"
+        },
+        "style": {
+          "description": "Alteração que não afetam o significado do código (white-space, formatação, etc)",
+          "title": "Estilo de código"
+        },
+        "refactor": {
+          "description": "Um código que não corrige um bug ou adiciona uma nova funcionalidade",
+          "title": "Refatoração de código"
+        },
+        "perf": {
+          "description": "Um código que otimiza a performance",
+          "title": "Otimizações de performance"
+        },
+        "test": {
+          "description": "Adiciona novos testes ou corrige testes existentes",
+          "title": "Testes"
+        },
+        "build": {
+          "description": "Alteração que afeta o processo de build ou dependências externas (example scopes: webpack, npm)",
+          "title": "Builds"
+        },
+        "ci": {
+          "description": "Alteração da configuração do CI e scripts (escopos de exemplo: Travis, Circle, BrowserStack, SauceLabs)",
+          "title": "Integrações contínuas"
+        },
+        "chore": {
+          "description": "Outras alterações que não alteram o código fonte ou testes",
+          "title": "Tarefas"
+        },
+        "revert": {
+          "description": "Desfaz um commit anterior",
+          "title": "Reversões"
+        }
+      }
+    }
   }
 }
