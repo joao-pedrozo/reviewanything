@@ -11,9 +11,9 @@ const RootQuery = new GraphQLObjectType({
       type: ReviewGraphQLType,
       args: { id: { type: GraphQLString }},
        async resolve(parent, args) {
-        const [{ _id, title, text, overall, url, created_at, by_user, user: [user] }] = await Review.aggregate([{
+        const [{ _id, title, text, overall, url, created_at, byUser, user: [user] }] = await Review.aggregate([{
            $match : { _id : mongoose.Types.ObjectId(args.id) } }, { 
-           $lookup: { from: 'users', localField: 'by_user', foreignField: '_id', as: 'user'  } 
+           $lookup: { from: 'users', localField: 'byUser', foreignField: '_id', as: 'user'  } 
           }
         ]
       )
@@ -24,7 +24,7 @@ const RootQuery = new GraphQLObjectType({
         overall,
         url,
         created_at,
-        by_user,
+        byUser,
         user,
       }
 
@@ -38,14 +38,14 @@ const RootQuery = new GraphQLObjectType({
         const reviews = await Review.aggregate([{
           $lookup: {
             from: 'users',
-            localField: 'by_user',
+            localField: 'byUser',
             foreignField: '_id',
             as: 'user'
           }
         }
       ]);
 
-      const returnableReviews = reviews.map(({ _id, title, text, overall, url, created_at, by_user, user: [user] }) => {
+      const returnableReviews = reviews.map(({ _id, title, text, overall, url, created_at, byUser, user: [user] }) => {
         return {
           _id,
           title,
@@ -53,7 +53,7 @@ const RootQuery = new GraphQLObjectType({
           overall,
           url,
           created_at,
-          by_user,
+          byUser,
           user
         }
       });

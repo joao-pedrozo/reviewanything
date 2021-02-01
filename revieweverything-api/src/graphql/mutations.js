@@ -10,7 +10,7 @@ const Mutation = new GraphQLObjectType({
             args: {
                 title: { type: GraphQLString },
                 text: { type: GraphQLString },
-                by_user: { type: GraphQLString },
+                byUser: { type: GraphQLString },
                 overall: { type: GraphQLInt },
                 url: { type: GraphQLString }
             },
@@ -20,7 +20,7 @@ const Mutation = new GraphQLObjectType({
                 const newReview = new Review({
                     title: args.title,
                     text: args.text,
-                    by_user: args.by_user,
+                    byUser: args.byUser,
                     overall: args.overall,
                     url: args.url,
                     created_at: currentDate.toDateString(),

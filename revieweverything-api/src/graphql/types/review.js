@@ -8,7 +8,7 @@ const ReviewType = new GraphQLObjectType({
         title: { type: GraphQLString },
         text: { type: GraphQLString },
         url: { type: GraphQLString },
-        by_user: { type: GraphQLString },
+        byUser: { type: GraphQLString },
         overall: { type: GraphQLInt },
         user: { type: UserGraphQLType }
     })

@@ -8,7 +8,7 @@ import mongoose, { Schema } from 'mongoose';
 const ReviewSchema = new Schema({
   title: String,
   text: String,
-  by_user: String,
+  byUser: String,
   url: String,
   overall: Number,
   created_at: Date,
