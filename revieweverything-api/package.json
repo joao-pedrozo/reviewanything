@@ -30,49 +30,49 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog",
       "types": {
-        "feat": {
-          "description": "Uma nova funcionalidade",
-          "title": "Funcionalidades"
+        "✨ feat": {
+          "title": "New features",
+          "description": "Add new features"
         },
-        "fix": {
-          "description": "Uma correção de bug",
-          "title": "Correções de bugs"
+        "🔧 fix": {
+          "title": "Fix one ore more bugs",
+          "description": "Bugfix"
         },
-        "docs": {
-          "description": "Alteração de documentação",
-          "title": "Documentação"
+        "📝 docs": {
+          "title": "Documentation",
+          "description": "Change docs"
         },
-        "style": {
-          "description": "Alteração que não afetam o significado do código (white-space, formatação, etc)",
-          "title": "Estilo de código"
+        "💄 style": {
+          "title": "Code style",
+          "description": "Changes that doesn't affect directly the code logic (white-space, formatation, etc)"
         },
-        "refactor": {
-          "description": "Um código que não corrige um bug ou adiciona uma nova funcionalidade",
-          "title": "Refatoração de código"
+        "♻️ refactor": {
+          "title": "Refactor",
+          "description": "Refactors a piece of the code"
         },
-        "perf": {
-          "description": "Um código que otimiza a performance",
-          "title": "Otimizações de performance"
+        "⚡️ perf": {
+          "title": "Perf",
+          "description": "Features that optimizes the app performance"
         },
-        "test": {
-          "description": "Adiciona novos testes ou corrige testes existentes",
-          "title": "Testes"
+        "✅ test": {
+          "title": "Tests",
+          "description": "Add new tests or fix the existent ones"
         },
-        "build": {
-          "description": "Alteração que afeta o processo de build ou dependências externas (example scopes: webpack, npm)",
-          "title": "Builds"
+        "🏗 build": {
+          "title": "Build",
+          "description": "Changes that affect the build process or external dependencies (example scopes: webpack, npm)"
         },
-        "ci": {
-          "description": "Alteração da configuração do CI e scripts (escopos de exemplo: Travis, Circle, BrowserStack, SauceLabs)",
-          "title": "Integrações contínuas"
+        "👷 ci": {
+          "title": "CI",
+          "description": "Changes ci's configuration or script"
         },
-        "chore": {
-          "description": "Outras alterações que não alteram o código fonte ou testes",
-          "title": "Tarefas"
+        "🚚 chore": {
+          "title": "Tasks",
+          "description": "Other changes that doesn't affect source code or tests"
         },
-        "revert": {
-          "description": "Desfaz um commit anterior",
-          "title": "Reversões"
+        "⏪ revert": {
+          "title": "Revert",
+          "description": "Undo a previous commit"
         }
       }
     }
