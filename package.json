@@ -4,14 +4,71 @@
   "license": "MIT",
   "private": "true",
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
+    "babel-eslint": "^10.1.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1"
+  },
+  "scripts": {
+    "commit": "git-cz",
+    "lint": "eslint --ext .js, packages --ext .js,.jsx,.ts,.tsx"
   },
   "workspaces": [
     "packages/*"
   ],
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./node_modules/cz-conventional-changelog",
+      "types": {
+        "✨ feat": {
+          "title": "New features",
+          "description": "Add new features"
+        },
+        "🔧 fix": {
+          "title": "Fix one ore more bugs",
+          "description": "Bugfix"
+        },
+        "📝 docs": {
+          "title": "Documentation",
+          "description": "Change docs"
+        },
+        "💄 style": {
+          "title": "Code style",
+          "description": "Changes that doesn't affect directly the code logic (white-space, formatation, etc)"
+        },
+        "♻️  refactor": {
+          "title": "Refactor",
+          "description": "Refactors a piece of the code"
+        },
+        "⚡️ perf": {
+          "title": "Perf",
+          "description": "Features that optimizes the app performance"
+        },
+        "✅ test": {
+          "title": "Tests",
+          "description": "Add new tests or fix the existent ones"
+        },
+        "🏗  build": {
+          "title": "Build",
+          "description": "Changes that affect the build process or external dependencies (example scopes: webpack, npm)"
+        },
+        "👷 ci": {
+          "title": "CI",
+          "description": "Changes ci's configuration or script"
+        },
+        "🚚 chore": {
+          "title": "Tasks",
+          "description": "Other changes that doesn't affect source code or tests"
+        },
+        "⏪ revert": {
+          "title": "Revert",
+          "description": "Undo a previous commit"
+        }
+      }
     }
+  },
+  "dependencies": {
+    "prettier": "^2.2.1"
   }
 }
