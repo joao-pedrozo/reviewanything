@@ -1,6 +1,0 @@
-[submodule "reviewanything-client"]
-	path = reviewanything-client
-	url = https://github.com/joao-pedrozo/reviewanything-client.git
-[submodule "reviewanything-api"]
-	path = reviewanything-api
-	url = https://github.com/joao-pedrozo/revieweverything-api

@@ -43,7 +43,13 @@
   },
   "devDependencies": {
     "babel-plugin-relay": "^10.1.2",
+    "cz-conventional-changelog": "^3.3.0",
     "graphql": "^15.4.0",
     "relay-config": "^10.1.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

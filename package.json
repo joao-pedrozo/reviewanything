@@ -2,5 +2,16 @@
   "name": "monorepo",
   "version": "1.0.0",
   "license": "MIT",
-  "private": "true"
+  "private": "true",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
