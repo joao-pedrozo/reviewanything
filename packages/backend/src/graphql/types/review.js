@@ -2,16 +2,16 @@ import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLList } from 'graph
 import UserGraphQLType from './user';
 
 const ReviewType = new GraphQLObjectType({
-    name: 'Review',
-    fields: () => ({
-        _id: { type: GraphQLString },
-        title: { type: GraphQLString },
-        text: { type: GraphQLString },
-        url: { type: GraphQLString },
-        byUser: { type: GraphQLString },
-        overall: { type: GraphQLInt },
-        user: { type: UserGraphQLType }
-    })
+  name: 'Review',
+  fields: () => ({
+    _id: { type: GraphQLString },
+    title: { type: GraphQLString },
+    text: { type: GraphQLString },
+    url: { type: GraphQLString },
+    byUser: { type: GraphQLString },
+    overall: { type: GraphQLInt },
+    user: { type: UserGraphQLType },
+  }),
 });
 
 export default ReviewType;

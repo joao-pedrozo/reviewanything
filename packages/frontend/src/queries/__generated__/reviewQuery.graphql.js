@@ -24,7 +24,6 @@ export type reviewQuery = {|
 |};
 */
 
-
 /*
 query reviewQuery(
   $id: String
@@ -37,80 +36,80 @@ query reviewQuery(
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "id"
-  }
-],
-v1 = [
-  {
-    "alias": null,
-    "args": [
+const node /*: ConcreteRequest*/ = (function () {
+  var v0 = [
       {
-        "kind": "Variable",
-        "name": "id",
-        "variableName": "id"
-      }
-    ],
-    "concreteType": "Review",
-    "kind": "LinkedField",
-    "name": "review",
-    "plural": false,
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "_id",
-        "storageKey": null
+        defaultValue: null,
+        kind: 'LocalArgument',
+        name: 'id',
       },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "title",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "overall",
-        "storageKey": null
-      }
     ],
-    "storageKey": null
-  }
-];
-return {
-  "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "reviewQuery",
-    "selections": (v1/*: any*/),
-    "type": "RootQueryType",
-    "abstractKey": null
-  },
-  "kind": "Request",
-  "operation": {
-    "argumentDefinitions": (v0/*: any*/),
-    "kind": "Operation",
-    "name": "reviewQuery",
-    "selections": (v1/*: any*/)
-  },
-  "params": {
-    "cacheID": "f8c5dda763edaa33120826a14f97445d",
-    "id": null,
-    "metadata": {},
-    "name": "reviewQuery",
-    "operationKind": "query",
-    "text": "query reviewQuery(\n  $id: String\n) {\n  review(id: $id) {\n    _id\n    title\n    overall\n  }\n}\n"
-  }
-};
+    v1 = [
+      {
+        alias: null,
+        args: [
+          {
+            kind: 'Variable',
+            name: 'id',
+            variableName: 'id',
+          },
+        ],
+        concreteType: 'Review',
+        kind: 'LinkedField',
+        name: 'review',
+        plural: false,
+        selections: [
+          {
+            alias: null,
+            args: null,
+            kind: 'ScalarField',
+            name: '_id',
+            storageKey: null,
+          },
+          {
+            alias: null,
+            args: null,
+            kind: 'ScalarField',
+            name: 'title',
+            storageKey: null,
+          },
+          {
+            alias: null,
+            args: null,
+            kind: 'ScalarField',
+            name: 'overall',
+            storageKey: null,
+          },
+        ],
+        storageKey: null,
+      },
+    ];
+  return {
+    fragment: {
+      argumentDefinitions: (v0 /*: any*/),
+      kind: 'Fragment',
+      metadata: null,
+      name: 'reviewQuery',
+      selections: (v1 /*: any*/),
+      type: 'RootQueryType',
+      abstractKey: null,
+    },
+    kind: 'Request',
+    operation: {
+      argumentDefinitions: (v0 /*: any*/),
+      kind: 'Operation',
+      name: 'reviewQuery',
+      selections: (v1 /*: any*/),
+    },
+    params: {
+      cacheID: 'f8c5dda763edaa33120826a14f97445d',
+      id: null,
+      metadata: {},
+      name: 'reviewQuery',
+      operationKind: 'query',
+      text: 'query reviewQuery(\n  $id: String\n) {\n  review(id: $id) {\n    _id\n    title\n    overall\n  }\n}\n',
+    },
+  };
 })();
 // prettier-ignore
 (node/*: any*/).hash = 'a2d697dcbf04713be8113369ede1b537';

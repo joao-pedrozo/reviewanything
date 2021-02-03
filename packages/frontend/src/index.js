@@ -8,11 +8,11 @@ import relayEnviroment from './relayEnviroment';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RelayEnvironmentProvider environment={relayEnviroment}> 
+    <RelayEnvironmentProvider environment={relayEnviroment}>
       <App />
     </RelayEnvironmentProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
