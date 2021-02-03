@@ -11,7 +11,7 @@ app.listen(9000);
 
 initDB();
 
-app.on('error', err => {
+app.on('error', (err) => {
   console.log(err);
 });
 

@@ -23,7 +23,7 @@ const Mutation = new GraphQLObjectType({
           byUser: args.byUser,
           overall: args.overall,
           url: args.url,
-          created_at: currentDate.toDateString(),
+          createdAt: currentDate.toDateString(),
         });
         return newReview.save();
       },

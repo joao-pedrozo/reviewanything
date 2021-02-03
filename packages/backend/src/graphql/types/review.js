@@ -1,4 +1,4 @@
-import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLList } from 'graphql';
+import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql';
 import UserGraphQLType from './user';
 
 const ReviewType = new GraphQLObjectType({
@@ -10,6 +10,7 @@ const ReviewType = new GraphQLObjectType({
     url: { type: GraphQLString },
     byUser: { type: GraphQLString },
     overall: { type: GraphQLInt },
+    imageUrl: { type: GraphQLString },
     user: { type: UserGraphQLType },
   }),
 });

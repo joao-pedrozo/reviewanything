@@ -23,9 +23,10 @@ const RootQuery = new GraphQLObjectType({
             text,
             overall,
             url,
-            created_at,
+            createdAt,
             byUser,
             user: [user],
+            imageUrl,
           },
         ] = await Review.aggregate([
           {
@@ -46,9 +47,10 @@ const RootQuery = new GraphQLObjectType({
           text,
           overall,
           url,
-          created_at,
+          createdAt,
           byUser,
           user,
+          imageUrl,
         };
 
         return review;
@@ -76,18 +78,20 @@ const RootQuery = new GraphQLObjectType({
             text,
             overall,
             url,
-            created_at,
+            createdAt,
             byUser,
             user: [user],
+            imageUrl,
           }) => ({
             _id,
             title,
             text,
             overall,
             url,
-            created_at,
+            createdAt,
             byUser,
             user,
+            imageUrl,
           }),
         );
         return returnableReviews;

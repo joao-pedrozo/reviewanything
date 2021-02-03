@@ -11,7 +11,8 @@ const ReviewSchema = new Schema({
   byUser: String,
   url: String,
   overall: Number,
-  created_at: Date,
+  createdAt: Date,
+  imageUrl: String,
 });
 
 export default mongoose.model('Review', ReviewSchema);
