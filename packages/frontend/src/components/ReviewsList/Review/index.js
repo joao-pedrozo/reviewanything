@@ -11,8 +11,17 @@ const ReviewImageContainer = styled.div``;
 
 const ReviewInfoContainer = styled.div``;
 
-const App = props => {
-  return <Wrapper></Wrapper>;
+const App = (props) => {
+  return (
+    <Wrapper>
+      {props.imageUrl}
+      <ReviewImageContainer>
+        <img src={props.imageUrl} />
+      </ReviewImageContainer>
+
+      <ReviewInfoContainer></ReviewInfoContainer>
+    </Wrapper>
+  );
 };
 
 export default App;

@@ -3,18 +3,14 @@ schema {
   mutation: Mutation
 }
 
-"""
-Exposes a URL that specifies the behaviour of this scalar.
-"""
+"""Exposes a URL that specifies the behaviour of this scalar."""
 directive @specifiedBy(
-  """
-  The URL that specifies the behaviour of this scalar.
-  """
+  """The URL that specifies the behaviour of this scalar."""
   url: String!
 ) on SCALAR
 
 type Mutation {
-  addReview(title: String, text: String, by_user: String, overall: Int, url: String): Review
+  addReview(title: String, text: String, byUser: String, overall: Int, url: String): Review
 }
 
 type Review {
@@ -22,8 +18,9 @@ type Review {
   title: String
   text: String
   url: String
-  by_user: String
+  byUser: String
   overall: Int
+  imageUrl: String
   user: User
 }
 
@@ -36,3 +33,4 @@ type User {
   _id: String
   name: String
 }
+
