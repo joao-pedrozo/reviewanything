@@ -1,25 +1,27 @@
 import React from 'react';
-import {useQuery} from 'relay-hooks';
+import { useQuery } from 'relay-hooks';
+import styled from 'styled-components';
 import reviewQuery from './queries/reviewQuery';
-
-const options = {
-  fetchPolicy: 'store-or-network',
-  networkCacheConfig: undefined,
-};
-
-const variables = {
-  id: '5fff8a86e8687eebfea83e04',
-};
+import Review from './components/ReviewsList/Review';
 
 function App() {
-  const {data, error, retry, isLoading} = useQuery(
+  const options = {
+    fetchPolicy: 'store-or-network',
+    networkCacheConfig: undefined,
+  };
+
+  const variables = {
+    id: '5fff8a86e8687eebfea83e04',
+  };
+
+  const { data, error, retry, isLoading } = useQuery(
     reviewQuery,
     variables,
     options,
   );
-  console.log(isLoading);
+
   if (data && data.review) {
-    return <h1> {data.review.title} </h1>;
+    return <Review title={data.review.title} />;
   } else if (error) {
     return <div>{error.message}</div>;
   }
