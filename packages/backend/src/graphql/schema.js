@@ -1,4 +1,9 @@
-import { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLList } from 'graphql';
+import {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLSchema,
+  GraphQLList,
+} from 'graphql';
 import mongoose from 'mongoose';
 import ReviewGraphQLType from './types/review';
 import Review from '../models/review';
@@ -52,7 +57,7 @@ const RootQuery = new GraphQLObjectType({
 
     reviews: {
       type: new GraphQLList(ReviewGraphQLType),
-      async resolve(parent, args) {
+      async resolve() {
         const reviews = await Review.aggregate([
           {
             $lookup: {
@@ -65,18 +70,25 @@ const RootQuery = new GraphQLObjectType({
         ]);
 
         const returnableReviews = reviews.map(
-          ({ _id, title, text, overall, url, created_at, byUser, user: [user] }) => {
-            return {
-              _id,
-              title,
-              text,
-              overall,
-              url,
-              created_at,
-              byUser,
-              user,
-            };
-          },
+          ({
+            _id,
+            title,
+            text,
+            overall,
+            url,
+            created_at,
+            byUser,
+            user: [user],
+          }) => ({
+            _id,
+            title,
+            text,
+            overall,
+            url,
+            created_at,
+            byUser,
+            user,
+          }),
         );
         return returnableReviews;
       },

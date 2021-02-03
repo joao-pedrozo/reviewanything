@@ -17,12 +17,12 @@ app.on('error', err => {
 
 app.use(cors());
 
-app.use( 
+app.use(
   mount(
     '/graphql',
     graphqlHTTP({
-      schema: schema,
+      schema,
       graphiql: true,
     }),
   ),
-)
+);

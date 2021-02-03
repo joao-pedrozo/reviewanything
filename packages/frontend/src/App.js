@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery } from 'relay-hooks';
+import {useQuery} from 'relay-hooks';
 import reviewQuery from './queries/reviewQuery';
 
 const options = {
@@ -12,7 +12,11 @@ const variables = {
 };
 
 function App() {
-  const { data, error, retry, isLoading } = useQuery(reviewQuery, variables, options);
+  const {data, error, retry, isLoading} = useQuery(
+    reviewQuery,
+    variables,
+    options,
+  );
   console.log(isLoading);
   if (data && data.review) {
     return <h1> {data.review.title} </h1>;
