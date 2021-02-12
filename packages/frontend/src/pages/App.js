@@ -1,20 +1,23 @@
 import React from 'react';
 import { useQuery } from 'relay-hooks';
-import Review from '../components/ReviewsList/Review';
 import graphql from 'babel-plugin-relay/macro';
 
-const query = graphql`
-  query AppQuery($id: String) {
-    review(id: $id) {
-      _id
-      title
-      overall
-      imageUrl
-    }
-  }
-`;
+import Review from '../components/ReviewCard';
+import Topbar from '../components/Topbar';
+import SearchReviewArea from '../components/SearchReviewArea';
 
 function App() {
+  const query = graphql`
+    query AppQuery($id: String) {
+      review(id: $id) {
+        _id
+        title
+        overall
+        imageUrl
+      }
+    }
+  `;
+
   const options = {
     fetchPolicy: 'store-or-network',
     networkCacheConfig: undefined,
@@ -27,9 +30,15 @@ function App() {
   const { data, error, retry, isLoading } = useQuery(query, variables, options);
 
   if (data && data.review) {
-    return <Review title={data.review.title} imageUrl={data.review.imageUrl} />;
+    return (
+      <>
+        <Topbar />
+        <SearchReviewArea />
+        <Review data={data} />
+      </>
+    );
   } else if (error) {
-    return <div>{error.message}</div>;
+    return <div>b</div>;
   }
   return <h1> Loading </h1>;
 }

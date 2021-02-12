@@ -9,6 +9,7 @@
     "get-graphql-schema": "^2.1.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
     "react-relay": "^10.1.2",
     "react-scripts": "4.0.1",
     "relay-compiler": "^10.1.2",
