@@ -7,7 +7,7 @@ const SearchReviewArea = () => {
       <ContentWrapper>
         <ReviewAnything>ReviewAnything</ReviewAnything>
 
-        <InformationText>Pesquise por um review ou faça um!</InformationText>
+        <InformationText>Pesquise por um review :)</InformationText>
 
         <SearchReviewInput></SearchReviewInput>
       </ContentWrapper>
