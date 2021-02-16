@@ -45,10 +45,10 @@ const LogoReviewTerm = styled.p`
 `;
 
 const LogoAnythingTerm = styled.p`
-  color: #e67e22;
+  color: #e74c3c;
 `;
 
-const SignArea = styled.div`
+const SignArea = styled.a`
   display: flex;
   flex-direction: column;
   align-items: center;
