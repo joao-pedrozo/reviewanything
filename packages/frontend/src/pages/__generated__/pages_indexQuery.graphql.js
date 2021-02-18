@@ -8,10 +8,10 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type AppQueryVariables = {|
+export type pages_indexQueryVariables = {|
   id?: ?string
 |};
-export type AppQueryResponse = {|
+export type pages_indexQueryResponse = {|
   +review: ?{|
     +_id: ?string,
     +title: ?string,
@@ -19,15 +19,15 @@ export type AppQueryResponse = {|
     +imageUrl: ?string,
   |}
 |};
-export type AppQuery = {|
-  variables: AppQueryVariables,
-  response: AppQueryResponse,
+export type pages_indexQuery = {|
+  variables: pages_indexQueryVariables,
+  response: pages_indexQueryResponse,
 |};
 */
 
 
 /*
-query AppQuery(
+query pages_indexQuery(
   $id: String
 ) {
   review(id: $id) {
@@ -99,7 +99,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "AppQuery",
+    "name": "pages_indexQuery",
     "selections": (v1/*: any*/),
     "type": "RootQueryType",
     "abstractKey": null
@@ -108,20 +108,20 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "AppQuery",
+    "name": "pages_indexQuery",
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "cb1192455ec838046cd0cd3c9dfef098",
+    "cacheID": "64116806c15c976cb7600493bd4bf8b4",
     "id": null,
     "metadata": {},
-    "name": "AppQuery",
+    "name": "pages_indexQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $id: String\n) {\n  review(id: $id) {\n    _id\n    title\n    overall\n    imageUrl\n  }\n}\n"
+    "text": "query pages_indexQuery(\n  $id: String\n) {\n  review(id: $id) {\n    _id\n    title\n    overall\n    imageUrl\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'c3074c28ab32feecdca8e2adf030d9ee';
+(node/*: any*/).hash = '54d60da6340714393d3fb1f6370962e4';
 
 module.exports = node;
