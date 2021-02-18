@@ -8,7 +8,7 @@ import SearchReviewArea from '../components/SearchReviewArea';
 
 function App() {
   const query = graphql`
-    query AppQuery($id: String) {
+    query pages_indexQuery($id: String) {
       review(id: $id) {
         _id
         title
@@ -38,7 +38,7 @@ function App() {
       </>
     );
   } else if (error) {
-    return <div>b</div>;
+    return <div>{{error}}</div>;
   }
   return <h1> Loading </h1>;
 }
