@@ -5,7 +5,11 @@ import {
   GraphQLList,
 } from 'graphql';
 import mongoose from 'mongoose';
+
 import ReviewGraphQLType from './types/review';
+import AuthGraphQLType from './types/auth';
+
+import User from '../models/users';
 import Review from '../models/review';
 import Mutations from './mutations';
 
@@ -97,6 +101,18 @@ const RootQuery = new GraphQLObjectType({
         return returnableReviews;
       },
     },
+
+    // auth: {
+    //   type: AuthGraphQLType,
+    //   args: {
+    //     username: { type: GraphQLString },
+    //     email: { type: GraphQLString },
+    //     password: { type: GraphQLString },
+    //   },
+    //   async resolve(parent, args) {
+
+    //   },
+    // },
   },
 });
 

@@ -5,8 +5,11 @@ import mongoose, { Schema } from 'mongoose';
   an ID by default to all schemas.
 */
 
-const ReviewSchema = new Schema({
+const UserSchema = new Schema({
+  username: String,
   name: String,
+  email: String,
+  password: String,
 });
 
-export default mongoose.model('Review', ReviewSchema);
+export default mongoose.model('User', UserSchema);
