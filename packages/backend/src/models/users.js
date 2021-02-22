@@ -10,6 +10,8 @@ const UserSchema = new Schema({
   name: String,
   email: String,
   password: String,
+  createdAt: Date,
+  imageUrl: String,
 });
 
 export default mongoose.model('User', UserSchema);

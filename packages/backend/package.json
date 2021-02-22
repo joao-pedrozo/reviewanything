@@ -16,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "eslint": "^7.19.0",
     "graphql": "^15.4.0",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.1",
     "koa-graphql": "^0.8.0",
     "koa-mount": "^4.0.0",
