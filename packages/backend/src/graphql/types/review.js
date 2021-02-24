@@ -12,6 +12,7 @@ const ReviewType = new GraphQLObjectType({
     overall: { type: GraphQLInt },
     imageUrl: { type: GraphQLString },
     user: { type: UserGraphQLType },
+    createdAt: { type: GraphQLString },
   }),
 });
 

@@ -1,11 +1,16 @@
-import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql';
+import { GraphQLObjectType, GraphQLString } from 'graphql';
 
-const ReviewType = new GraphQLObjectType({
+const UserType = new GraphQLObjectType({
   name: 'User',
   fields: () => ({
     _id: { type: GraphQLString },
+    username: { type: GraphQLString },
     name: { type: GraphQLString },
+    email: { type: GraphQLString },
+    password: { type: GraphQLString },
+    createdAt: { type: GraphQLString },
+    imageUrl: { type: GraphQLString },
   }),
 });
 
-export default ReviewType;
+export default UserType;
