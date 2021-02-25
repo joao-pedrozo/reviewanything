@@ -29,6 +29,8 @@ function App() {
 
   const { data, error, retry, isLoading } = useQuery(query, variables, options);
 
+  console.log(useQuery(query, variables, options));
+
   if (data && data.review) {
     return (
       <>
@@ -38,7 +40,7 @@ function App() {
       </>
     );
   } else if (error) {
-    return <div>{{error}}</div>;
+    return <div>Erro</div>;
   }
   return <h1> Loading </h1>;
 }
