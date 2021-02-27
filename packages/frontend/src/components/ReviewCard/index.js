@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { AiFillStar } from 'react-icons/ai';
 
 const App = ({ data }) => {
-  console.log(data);
   return (
     <Wrapper>
       <TitleArea>
