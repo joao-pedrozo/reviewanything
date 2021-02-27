@@ -11,7 +11,7 @@ const TopBar = () => {
         <LogoAnythingTerm>anything</LogoAnythingTerm>
       </LogoWrapper>
 
-      <SignArea href="/sign-up">
+      <SignArea href="/signUp">
         <AiOutlineUser size={28} />
         <SignUpText>Entrar</SignUpText>
       </SignArea>

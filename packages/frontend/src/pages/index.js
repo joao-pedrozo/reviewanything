@@ -29,8 +29,6 @@ function App() {
 
   const { data, error, retry, isLoading } = useQuery(query, variables, options);
 
-  console.log(useQuery(query, variables, options));
-
   if (data && data.review) {
     return (
       <>
