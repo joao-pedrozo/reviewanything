@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup"
@@ -59,7 +59,7 @@ const SignUp = () => {
                         Router.push('/')
                     }}
                 >
-                    {({ errors, handleSubmit }) => (
+                    {({ errors }) => (
                         <Form> 
                             <FormFieldWrapper>
                                 <label htmlFor="username">Nome de usuário</label>
@@ -82,7 +82,7 @@ const SignUp = () => {
                                 {errors.password && <p>{errors.password}</p>}
                             </FormFieldWrapper>
 
-                            <FormSubmitButton onSubmit={handleSubmit} type="submit">
+                            <FormSubmitButton type="submit">
                                 Finalizar cadastro
                             </FormSubmitButton>
                         </Form>
