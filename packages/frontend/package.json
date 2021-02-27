@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "@types/styled-components": "^5.1.7",
     "babel-plugin-styled-components": "^1.12.0",
+    "formik": "^2.2.6",
     "get-graphql-schema": "^2.1.2",
     "next": "^10.0.7",
     "react": "^17.0.1",
@@ -17,7 +18,8 @@
     "relay-compiler": "^10.1.2",
     "relay-hooks": "^4.0.0-rc.2",
     "styled-components": "^5.2.1",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "yarn run relay && next dev",
