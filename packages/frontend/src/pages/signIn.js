@@ -20,7 +20,6 @@ const Signin = () => {
             }
         }
     `)
-
     return (
         <PageWrapper>
             <PageContent>
