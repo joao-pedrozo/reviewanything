@@ -20,7 +20,8 @@
     "lint": "eslint --ext .js, packages --ext .js,.jsx,.ts,.tsx",
     "dev:start": "yarn dev:server & yarn dev:client",
     "dev:server": "yarn workspace @reviewanything/backend dev:server",
-    "dev:client": "yarn workspace @reviewanything/frontend start"
+    "dev:client": "yarn workspace @reviewanything/frontend start",
+    "relay-generate": "yarn workspace @reviewanything/frontend relay-generate"
   },
   "workspaces": [
     "packages/*"

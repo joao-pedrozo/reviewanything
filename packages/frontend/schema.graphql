@@ -17,6 +17,7 @@ type Auth {
 type Mutation {
   addReview(title: String, text: String, byUser: String, overall: Int, url: String): Review
   addUser(username: String, name: String, email: String, password: String, imageUrl: String): User
+  auth(email: String, password: String): Auth
 }
 
 type Review {
@@ -34,7 +35,6 @@ type Review {
 type RootQueryType {
   review(id: String): Review
   reviews: [Review]
-  auth(email: String, password: String): Auth
   verifyAuth(token: String): VerifyAuth
 }
 

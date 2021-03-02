@@ -4,6 +4,8 @@ import { Formik, Form, Field } from "formik";
 import { useMutation } from 'relay-hooks';
 import * as Yup from "yup"
 import graphql from 'babel-plugin-relay/macro';
+import Router from 'next/router';
+import { signIn } from 'next-auth/client'
 
 const validationSchema = Yup.object({
     email: Yup.string().required('Campo obrigatório').email('E-mail inválido'),
@@ -18,43 +20,48 @@ const Signin = () => {
             }
         }
     `)
-
-   return (
-    <PageWrapper>
-        <PageContent>
-            <Logo>
-                RA
+    return (
+        <PageWrapper>
+            <PageContent>
+                <Logo>
+                    RA
             </Logo>
 
-            <Formik 
-                initialValues={{ email: '', password: ''}}
-                validationSchema={validationSchema}
-                onSubmit={async (values) => {               
-                 const test = await mutate({ variables: { email: values.email, password: values.password }});
-                 console.log(test);
-                }}
-            >
-               {({ errors }) => (
-                   <Form>
-                       <FormFieldWrapper>
-                            <label htmlFor="email">E-mail</label>
-                            <Field id="email" name="email" type="email"/>
-                            {errors.email && <p>{errors.email}</p>}
-                       </FormFieldWrapper>
-                       <FormFieldWrapper>
-                            <label htmlFor="passowrd">Senha</label>
-                            <Field id="password" name="password" type="password"/>
-                            {errors.password && <p>{errors.password}</p>}
-                       </FormFieldWrapper>
-                       <FormSubmitButton type="submit">
-                           Entrar
+                <Formik
+                    initialValues={{ email: '', password: '' }}
+                    validationSchema={validationSchema}
+                    onSubmit={async ({ email, password }) => {
+                        //  try {
+                        //     const data = await mutate({ variables: { email: values.email, password: values.password }});
+                        //     updateToken(data.auth.token);
+                        //     Router.push('/');
+                        //  } catch(err) {
+                        //      console.log(err);
+                        //  }
+                        signIn('credentials', { email, password, callbackUrl: '/' });
+                    }}
+                >
+                    {({ errors }) => (
+                        <Form>
+                            <FormFieldWrapper>
+                                <label htmlFor="email">E-mail</label>
+                                <Field id="email" name="email" type="email" />
+                                {errors.email && <p>{errors.email}</p>}
+                            </FormFieldWrapper>
+                            <FormFieldWrapper>
+                                <label htmlFor="passowrd">Senha</label>
+                                <Field id="password" name="password" type="password" />
+                                {errors.password && <p>{errors.password}</p>}
+                            </FormFieldWrapper>
+                            <FormSubmitButton type="submit">
+                                Entrar
                        </FormSubmitButton>
-                    </Form>
-               )}
-           </Formik>
-        </PageContent>
-    </PageWrapper>
-   )
+                        </Form>
+                    )}
+                </Formik>
+            </PageContent>
+        </PageWrapper>
+    )
 };
 
 const PageWrapper = styled.div`
