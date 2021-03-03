@@ -24,11 +24,11 @@
     "mongodb": "^3.6.4",
     "mongodb-memory-server": "^6.9.3",
     "mongoose": "^5.11.10",
-    "pm2": "^4.5.1"
-  },
-  "devDependencies": {
+    "pm2": "^4.5.1",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+  },
+  "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
     "nodemon": "^2.0.7"
   },
