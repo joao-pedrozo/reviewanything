@@ -1,7 +1,8 @@
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
+import { useRelayEnvironment } from 'react-relay';
 
-import { useMutation } from 'relay-hooks';
+import { commitMutation } from 'relay-hooks';
 
 export default NextAuth({
   providers: [
@@ -13,23 +14,32 @@ export default NextAuth({
       // e.g. domain, username, password, 2FA token, etc.
       credentials: {
         email: { label: "Email", type: "text" },
-        password: {  label: "Password", type: "password" }
+        password: { label: "Password", type: "password" }
       },
-      async authorize(teste) {
-        console.log(teste);
-        try {
-          const [mutate, { error, data }] = useMutation(graphql`
-          mutation auth_signInMutation($email: String, $password: String) {
-              auth(email: $email, password: $password) {
-                  token
+      async authorize({ email, password }) {
+        const query = `
+          mutation fetch($email: String, $password: String){
+            auth(email: $email, password: $password){
+              user{
+                name
               }
+            }
           }
-        `)
-        } catch(err) {
-          console.log(err);
-        }
-        console.log('aqqdasdsa')
+        `
+
+        const variables = { email, password };
+
+        const teste = await fetch(`${process.env.API_URL}/graphql`, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({ query, variables }),
+        });
+
+        console.log(teste);
       }
     })
   ]
-  })
+})

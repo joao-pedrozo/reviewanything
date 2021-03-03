@@ -22,6 +22,7 @@ const query = graphql`
 function App() {
 
   const { data, error, retry, isLoading } = useQuery(query, { id: '5fff8a86e8687eebfea83e04' })
+  console.log(error);
 
   if (data && data.review) {
     return (
@@ -32,7 +33,7 @@ function App() {
       </>
     );
   } else if (error) {
-    return <div>Erro</div>;
+    return <div>erro</div>;
   }
   return <h1> Loading </h1>;
 }

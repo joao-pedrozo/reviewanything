@@ -6,16 +6,16 @@ import { useMutation } from 'relay-hooks';
 import graphql from 'babel-plugin-relay/macro';
 import Router from 'next/router'
 
-const validationSchema = Yup.object({ 
-    username: 
-    Yup.string()
-    .required('Campo obrigatório.')
-    .matches(/^[A-Z0-9_]+$/i, 'O nome de usuário não pode conter caractere especiais(incluindo espaço)')
-    .min(4, 'O nome de usuário deve conter no mínimo 4 digitos')
-    .max(12, 'O nome de usuário deve conter no máximo 12 digitos'),
+const validationSchema = Yup.object({
+    username:
+        Yup.string()
+            .required('Campo obrigatório.')
+            .matches(/^[A-Z0-9_]+$/i, 'O nome de usuário não pode conter caractere especiais(incluindo espaço)')
+            .min(4, 'O nome de usuário deve conter no mínimo 4 digitos')
+            .max(12, 'O nome de usuário deve conter no máximo 12 digitos'),
     email: Yup.string().email('Endereço de e-mail inválido').required('Campo obrigatório'),
     password: Yup.string().min(6, 'No mínimo 6 digitos').required('Campo obrigatório'),
- });
+});
 
 const SignUp = () => {
     const [mutate, { error }] = useMutation(graphql`
@@ -28,7 +28,7 @@ const SignUp = () => {
     return (
         <PageWrapper>
             <PageTopCicle />
-            <PageBottomCicle/>
+            <PageBottomCicle />
             <ContentWrapper>
                 <Logo>
                     RA
@@ -46,39 +46,41 @@ const SignUp = () => {
                     <hr></hr>
                 </FormSeparator>
 
-                <Formik 
-                    initialValues={{ name: '', username: '', email: '', password: '' }} 
+                <Formik
+                    initialValues={{ name: '', username: '', email: '', password: '' }}
                     validationSchema={validationSchema}
-                    onSubmit={(params) => { 
-                        mutate({ variables: {
-                            name: params.name,
-                            email: params.email,
-                            password: params.password,
-                            username: params.username,
-                        }}) 
+                    onSubmit={(params) => {
+                        mutate({
+                            variables: {
+                                name: params.name,
+                                email: params.email,
+                                password: params.password,
+                                username: params.username,
+                            }
+                        })
                         Router.push('/')
                     }}
                 >
                     {({ errors }) => (
-                        <Form> 
+                        <Form>
                             <FormFieldWrapper>
                                 <label htmlFor="username">Nome de usuário</label>
-                                <Field id="username" name="username" type="text"/>
+                                <Field id="username" name="username" type="text" />
                                 {errors.username && <p>{errors.username}</p>}
                             </FormFieldWrapper>
                             <FormFieldWrapper>
                                 <label htmlFor="name">Nome</label>
-                                <Field id="name" name="name" type="text"/>
+                                <Field id="name" name="name" type="text" />
                                 {errors.name && <p>{errors.name}</p>}
                             </FormFieldWrapper>
                             <FormFieldWrapper>
                                 <label htmlFor="email">Email</label>
-                                <Field id="email" name="email" type="email"/>
+                                <Field id="email" name="email" type="email" />
                                 {errors.email && <p>{errors.email}</p>}
                             </FormFieldWrapper>
                             <FormFieldWrapper>
                                 <label htmlFor="password">Senha</label>
-                                <Field id="password" name="password" type="password"/>
+                                <Field id="password" name="password" type="password" />
                                 {errors.password && <p>{errors.password}</p>}
                             </FormFieldWrapper>
 
@@ -86,7 +88,7 @@ const SignUp = () => {
                                 Finalizar cadastro
                             </FormSubmitButton>
                         </Form>
-                    )} 
+                    )}
                 </Formik>
             </ContentWrapper>
         </PageWrapper>
