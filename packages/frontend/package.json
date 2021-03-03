@@ -23,9 +23,6 @@
   },
   "scripts": {
     "start": "yarn run relay && next dev",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "relay": "relay-compiler --src ./src --schema ./schema.graphql",
     "relay-generate": "get-graphql-schema http://127.0.0.1:9000/graphql > ./schema.graphql"
   },
