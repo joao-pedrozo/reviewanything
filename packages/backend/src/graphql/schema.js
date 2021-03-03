@@ -5,11 +5,9 @@ import {
   GraphQLList,
 } from 'graphql';
 import mongoose from 'mongoose';
-import { compare } from 'bcryptjs';
-import { sign, verify } from 'jsonwebtoken';
+import { verify } from 'jsonwebtoken';
 
 import ReviewGraphQLType from './types/review';
-import AuthGraphQLType from './types/auth';
 import ValidateAuthGraphqlType from './types/validateAuth';
 
 import User from '../models/users';
@@ -102,36 +100,6 @@ const RootQuery = new GraphQLObjectType({
           }),
         );
         return returnableReviews;
-      },
-    },
-
-    auth: {
-      type: AuthGraphQLType,
-      args: {
-        email: { type: GraphQLString },
-        password: { type: GraphQLString },
-      },
-      async resolve(parent, args) {
-        const findUserWithEmail = await User.findOne({ email: args.email }).select('+password');
-
-        if (!findUserWithEmail) {
-          throw new Error('Combinação de e-mail e senha incorreta.');
-        }
-
-        const passwordMatched = await compare(args.password, findUserWithEmail.password);
-
-        if (!passwordMatched) {
-          throw new Error('Combinação de e-mail e senha incorreta.');
-        }
-
-        const token = sign({ id: findUserWithEmail.id }, '$!@A61$@!A9D', { expiresIn: '3d' });
-
-        findUserWithEmail.password = null;
-
-        return {
-          user: findUserWithEmail,
-          token,
-        };
       },
     },
 

@@ -11,6 +11,7 @@
     "formik": "^2.2.6",
     "get-graphql-schema": "^2.1.2",
     "next": "^10.0.7",
+    "next-auth": "^3.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
