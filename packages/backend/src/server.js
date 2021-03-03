@@ -8,14 +8,14 @@ import initDB from './database';
 
 const app = new Koa();
 
-app.listen(9000, "127.0.0.1");
+app.listen(process.env.PORT || 9000, process.env.URL || '127.0.0.1');
 
 initDB();
 
-app.on('error', (err) => errorType[err]);
+app.on('error', (err) => console.log(err));
 
-var options = {
-  origin: '*'
+const options = {
+  origin: '*',
 };
 
 app.use(cors(options));

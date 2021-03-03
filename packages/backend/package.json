@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start server.js",
+    "start": "pm2 start src/server.js",
     "dev:server": "nodemon --exec babel-node src/server.js",
     "commit": "git-cz"
   },
