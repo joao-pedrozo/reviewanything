@@ -8,7 +8,7 @@ import initDB from './database';
 
 const app = new Koa();
 
-app.listen(process.env.PORT || 9000, process.env.URL || '127.0.0.1');
+app.listen(process.env.PORT || 9000);
 
 initDB();
 

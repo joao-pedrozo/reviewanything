@@ -28,7 +28,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = new _koa2.default();
 
-app.listen(process.env.PORT || 9000, process.env.URL || '127.0.0.1');
+app.listen(process.env.PORT || 9000);
 
 (0, _database2.default)();
 
