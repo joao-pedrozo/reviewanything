@@ -30,16 +30,11 @@ const Signin = () => {
                 <Formik
                     initialValues={{ email: '', password: '' }}
                     validationSchema={validationSchema}
-                    onSubmit={async ({ email, password }) => {
-                        //  try {
-                        //     const data = await mutate({ variables: { email: values.email, password: values.password }});
-                        //     updateToken(data.auth.token);
-                        //     Router.push('/');
-                        //  } catch(err) {
-                        //      console.log(err);
-                        //  }
-                        signIn('credentials', { email, password, callbackUrl: '/' });
-                    }}
+                    onSubmit={
+                        async ({ email, password }) => {
+                            signIn('credentials', { email, password, callbackUrl: '/' });
+                        }
+                    }
                 >
                     {({ errors }) => (
                         <Form>

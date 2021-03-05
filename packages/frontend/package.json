@@ -7,7 +7,10 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/styled-components": "^5.1.7",
+    "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.12.0",
+    "dotenv": "^8.2.0",
+    "find-up": "^5.0.0",
     "formik": "^2.2.6",
     "get-graphql-schema": "^2.1.2",
     "next": "^10.0.7",
@@ -23,7 +26,7 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "yarn run relay && next dev",
+    "dev:start": "yarn relay-generate && yarn run relay && next dev",
     "relay": "relay-compiler --src ./src --schema ./schema.graphql",
     "relay-generate": "get-graphql-schema http://127.0.0.1:9000/graphql > ./schema.graphql"
   },
