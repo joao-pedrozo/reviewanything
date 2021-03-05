@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Formik, Form, Field } from "formik";
-import { useMutation } from 'relay-hooks';
 import * as Yup from "yup"
-import graphql from 'babel-plugin-relay/macro';
-import Router from 'next/router';
 import { signIn } from 'next-auth/client'
+import Router from 'next/router';
+
 
 const validationSchema = Yup.object({
     email: Yup.string().required('Campo obrigatório').email('E-mail inválido'),
@@ -13,13 +12,6 @@ const validationSchema = Yup.object({
 })
 
 const Signin = () => {
-    const [mutate, { error, data }] = useMutation(graphql`
-        mutation signIn_signInMutation($email: String, $password: String) {
-            auth(email: $email, password: $password) {
-                token
-            }
-        }
-    `)
     return (
         <PageWrapper>
             <PageContent>
@@ -32,7 +24,11 @@ const Signin = () => {
                     validationSchema={validationSchema}
                     onSubmit={
                         async ({ email, password }) => {
-                            signIn('credentials', { email, password, callbackUrl: '/' });
+                            const signInResult = await signIn('credentials', { email, password, redirect: false, });
+
+                            if (!signInResult.error) {
+                                Router.push('/');
+                            }
                         }
                     }
                 >

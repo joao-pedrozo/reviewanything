@@ -8,11 +8,7 @@ import axios from 'axios';
 export default NextAuth({
   providers: [
     Providers.Credentials({
-      // The name to display on the sign in form (e.g. 'Sign in with...')
       name: 'Credentials',
-      // The credentials is used to generate a suitable form on the sign in page.
-      // You can specify whatever fields you are expecting to be submitted.
-      // e.g. domain, username, password, 2FA token, etc.
       credentials: {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" }
@@ -35,6 +31,10 @@ export default NextAuth({
             variables: { email, password }
           }
         });
+
+        if (!response.data.data.auth) {
+          throw new Error('Usuário não encontrado, verifique as credenciais.')
+        }
 
         return {
           name: response.data.data.auth.user.name
