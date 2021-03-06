@@ -10,36 +10,52 @@ export default NextAuth({
     Providers.Credentials({
       name: 'Credentials',
       credentials: {
-        email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" }
+        email: { label: 'Email', type: 'text' },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize({ email, password }) {
         const query = `
           mutation fetch($email: String, $password: String){
             auth(email: $email, password: $password){
+              token
               user{
                 name
               }
             }
           }
-        `
+        `;
         const response = await axios({
           url: 'http://localhost:9000/graphql',
           method: 'post',
           data: {
             query,
-            variables: { email, password }
-          }
+            variables: { email, password },
+          },
         });
 
         if (!response.data.data.auth) {
-          throw new Error('Usuário não encontrado, verifique as credenciais.')
+          throw new Error('Usuário não encontrado, verifique as credenciais.');
         }
 
         return {
-          name: response.data.data.auth.user.name
-        }
+          name: response.data.data.auth.user.name,
+          token: response.data.data.auth.token,
+        };
+      },
+    }),
+  ],
+  callbacks: {
+    async jwt(token, user) {
+      if (user) {
+        token.accessToken = user.token;
       }
-    })
-  ]
+
+      return token;
+    },
+
+    async session(session, token) {
+      session.accessToken = token.accessToken;
+      return session;
+    },
+  },
 });

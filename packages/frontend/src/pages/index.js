@@ -6,7 +6,7 @@ import Review from '../components/ReviewCard';
 import Topbar from '../components/Topbar';
 import SearchReviewArea from '../components/SearchReviewArea';
 
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/client';
 
 const query = graphql`
   query pages_indexQuery($id: String) {
@@ -20,8 +20,9 @@ const query = graphql`
 `;
 
 function App() {
-
-  const { data, error, retry, isLoading } = useQuery(query, { id: '5fff8a86e8687eebfea83e04' })
+  const { data, error, retry, isLoading } = useQuery(query, {
+    id: '5fff8a86e8687eebfea83e04',
+  });
 
   const [session, loading] = useSession();
 
