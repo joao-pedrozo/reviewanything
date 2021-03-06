@@ -14,6 +14,7 @@
   "plugins": ["react"],
   "rules": {
     "import/no-unresolved": "off",
-    "jsx-a11y/alt-text": "off"
+    "jsx-a11y/alt-text": "off",
+    "import/prefer-default-export": "off"
   }
 }
