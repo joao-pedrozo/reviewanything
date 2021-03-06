@@ -1,111 +1,13 @@
-import { GraphQLInt, GraphQLObjectType, GraphQLString } from 'graphql';
-import { hash, compare } from 'bcryptjs';
+import { GraphQLObjectType } from 'graphql';
 
-import reviewGraphQLType from './types/review';
-import userGraphQLType from './types/user';
-import AuthGraphQLType from './types/auth';
+import { addReview, addUser } from './modules/mutations';
 
-import { sign } from 'jsonwebtoken';
-
-import Review from '../models/review';
-import User from '../models/users';
-
-const Mutation = new GraphQLObjectType({
-  name: 'Mutation',
+const Mutations = new GraphQLObjectType({
+  name: 'Mutations',
   fields: {
-    addReview: {
-      type: reviewGraphQLType,
-      args: {
-        title: { type: GraphQLString },
-        text: { type: GraphQLString },
-        byUser: { type: GraphQLString },
-        overall: { type: GraphQLInt },
-        url: { type: GraphQLString },
-      },
-      resolve(parent, args) {
-        const currentDate = new Date();
-
-        const newReview = new Review({
-          title: args.title,
-          text: args.text,
-          byUser: args.byUser,
-          overall: args.overall,
-          url: args.url,
-          createdAt: currentDate.toDateString(),
-        });
-        return newReview.save();
-      },
-    },
-
-    addUser: {
-      type: userGraphQLType,
-      args: {
-        username: { type: GraphQLString },
-        name: { type: GraphQLString },
-        email: { type: GraphQLString },
-        password: { type: GraphQLString },
-        imageUrl: { type: GraphQLString },
-      },
-      async resolve(parent, args) {
-        const checkUsernameExists = await User.find({ username: args.username });
-
-        if (checkUsernameExists.length) {
-          throw new Error('Nome de usuário já existente.');
-        }
-
-        const checkEmailAlreayExists = await User.find({ email: args.email });
-
-        if (checkEmailAlreayExists.length) {
-          throw new Error('Endereço de e-mail já existente.');
-        }
-
-        const hashedPassword = await hash(args.password, 8);
-
-        const currentDate = new Date();
-
-        const newUser = new User({
-          username: args.username,
-          name: args.name,
-          email: args.email,
-          password: hashedPassword,
-          imageUrl: args.imageUrl,
-          createdAt: currentDate.toDateString(),
-        });
-
-        return newUser.save();
-      },
-    },
-
-    auth: {
-      type: AuthGraphQLType,
-      args: {
-        email: { type: GraphQLString },
-        password: { type: GraphQLString },
-      },
-      async resolve(parent, args) {
-        const findUserWithEmail = await User.findOne({ email: args.email }).select('+password');
-
-        if (!findUserWithEmail) {
-          throw new Error('Combinação de e-mail e senha incorreta.');
-        }
-
-        const passwordMatched = await compare(args.password, findUserWithEmail.password);
-
-        if (!passwordMatched) {
-          throw new Error('Combinação de e-mail e senha incorreta.');
-        }
-
-        const token = sign({ id: findUserWithEmail.id }, '$!@A61$@!A9D', { expiresIn: '3d' });
-
-        findUserWithEmail.password = null;
-
-        return {
-          user: findUserWithEmail,
-          token,
-        };
-      },
-    },
+    addReview,
+    addUser,
   },
 });
 
-export default Mutation;
+export default Mutations;

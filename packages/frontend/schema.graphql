@@ -9,15 +9,9 @@ directive @specifiedBy(
   url: String!
 ) on SCALAR
 
-type Auth {
-  user: User
-  token: String
-}
-
 type Mutation {
   addReview(title: String, text: String, byUser: String, overall: Int, url: String): Review
   addUser(username: String, name: String, email: String, password: String, imageUrl: String): User
-  auth(email: String, password: String): Auth
 }
 
 type Review {
@@ -35,7 +29,6 @@ type Review {
 type RootQueryType {
   review(id: String): Review
   reviews: [Review]
-  verifyAuth(token: String): VerifyAuth
 }
 
 type User {
@@ -46,9 +39,5 @@ type User {
   password: String
   createdAt: String
   imageUrl: String
-}
-
-type VerifyAuth {
-  id: String
 }
 

@@ -21,7 +21,7 @@
     "dev:start": "yarn dev:server & yarn dev:client",
     "dev:server": "yarn workspace @reviewanything/backend dev:server",
     "server": "yarn workspace @reviewanything/backend start",
-    "dev:client": "yarn workspace @reviewanything/frontend start",
+    "dev:client": "yarn workspace @reviewanything/frontend dev:start",
     "relay-generate": "yarn workspace @reviewanything/frontend relay-generate"
   },
   "workspaces": [
