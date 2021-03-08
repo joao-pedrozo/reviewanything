@@ -113,7 +113,7 @@ return {
     "metadata": null,
     "name": "signUp_signUpMutation",
     "selections": (v4/*: any*/),
-    "type": "Mutation",
+    "type": "Mutations",
     "abstractKey": null
   },
   "kind": "Request",
