@@ -30,12 +30,6 @@
     "relay": "relay-compiler --src ./src/pages --schema ./schema.graphql",
     "relay-generate": "get-graphql-schema http://127.0.0.1:9000/graphql > ./schema.graphql"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",

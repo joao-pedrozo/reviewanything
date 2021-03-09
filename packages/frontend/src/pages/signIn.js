@@ -10,16 +10,16 @@ const validationSchema = Yup.object({
   password: Yup.string().required('Campo obrigatório'),
 });
 
-const Signin = () => {
-  return (
-    <PageWrapper>
-      <PageContent>
-        <Logo>RA</Logo>
+const Signin = () => (
+  <PageWrapper>
+    <PageContent>
+      <Logo>RA</Logo>
 
-        <Formik
-          initialValues={{ email: '', password: '' }}
-          validationSchema={validationSchema}
-          onSubmit={async ({ email, password }) => {
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        validationSchema={validationSchema}
+        onSubmit={async ({ email, password }) => {
+          try {
             const signInResult = await signIn('credentials', {
               email,
               password,
@@ -29,28 +29,30 @@ const Signin = () => {
             if (!signInResult.error) {
               Router.push('/');
             }
-          }}
-        >
-          {({ errors }) => (
-            <Form>
-              <FormFieldWrapper>
-                <label htmlFor="email">E-mail</label>
-                <Field id="email" name="email" type="email" />
-                {errors.email && <p>{errors.email}</p>}
-              </FormFieldWrapper>
-              <FormFieldWrapper>
-                <label htmlFor="passowrd">Senha</label>
-                <Field id="password" name="password" type="password" />
-                {errors.password && <p>{errors.password}</p>}
-              </FormFieldWrapper>
-              <FormSubmitButton type="submit">Entrar</FormSubmitButton>
-            </Form>
-          )}
-        </Formik>
-      </PageContent>
-    </PageWrapper>
-  );
-};
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
+        {({ errors }) => (
+          <Form>
+            <FormFieldWrapper>
+              <label htmlFor="email">E-mail</label>
+              <Field id="email" name="email" type="email" />
+              {errors.email && <p>{errors.email}</p>}
+            </FormFieldWrapper>
+            <FormFieldWrapper>
+              <label htmlFor="passowrd">Senha</label>
+              <Field id="password" name="password" type="password" />
+              {errors.password && <p>{errors.password}</p>}
+            </FormFieldWrapper>
+            <FormSubmitButton type="submit">Entrar</FormSubmitButton>
+          </Form>
+        )}
+      </Formik>
+    </PageContent>
+  </PageWrapper>
+);
 
 const PageWrapper = styled.div`
   width: 100%;
