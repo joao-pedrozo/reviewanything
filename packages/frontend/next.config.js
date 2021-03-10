@@ -1,3 +1,3 @@
-// module.exports = {
-//   pageExtensions: ['page.js'],
-// };
+module.exports = {
+  pageExtensions: ['page.js'],
+};

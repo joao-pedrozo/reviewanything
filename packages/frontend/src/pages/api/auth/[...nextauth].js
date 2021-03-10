@@ -32,8 +32,6 @@ export default NextAuth({
           },
         });
 
-        console.log(response.data.errors[0].message);
-
         if (response.data.errors) {
           throw new Error(response.data.errors[0].message);
         }
