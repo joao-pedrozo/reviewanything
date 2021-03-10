@@ -1,8 +1,6 @@
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 
-import { commitMutation } from 'relay-hooks';
-
 import axios from 'axios';
 
 export default NextAuth({
@@ -24,8 +22,9 @@ export default NextAuth({
             }
           }
         `;
+
         const response = await axios({
-          url: 'http://localhost:9000/graphql',
+          url: process.env.NEXT_PUBLIC_API_URL,
           method: 'post',
           data: {
             query,
@@ -33,8 +32,8 @@ export default NextAuth({
           },
         });
 
-        if (!response.data.data.auth) {
-          throw new Error('Usuário não encontrado, verifique as credenciais.');
+        if (response.data.errors) {
+          throw new Error(response.data.errors[0].message);
         }
 
         return {

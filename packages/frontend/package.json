@@ -19,6 +19,7 @@
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-relay": "^10.1.2",
+    "react-toastify": "^7.0.3",
     "relay-compiler": "^10.1.2",
     "relay-hooks": "^4.0.0-rc.2",
     "styled-components": "^5.2.1",
@@ -27,14 +28,8 @@
   },
   "scripts": {
     "dev:start": "yarn relay-generate && yarn run relay && next dev",
-    "relay": "relay-compiler --src ./src --schema ./schema.graphql",
+    "relay": "relay-compiler --src ./src/pages --schema ./schema.graphql",
     "relay-generate": "get-graphql-schema http://127.0.0.1:9000/graphql > ./schema.graphql"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [

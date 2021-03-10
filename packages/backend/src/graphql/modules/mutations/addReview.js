@@ -12,6 +12,7 @@ const AddReviewMutation = {
     byUser: { type: GraphQLString },
     overall: { type: GraphQLInt },
     url: { type: GraphQLString },
+    token: { type: GraphQLString },
   },
   resolve(parent, args) {
     const currentDate = new Date();

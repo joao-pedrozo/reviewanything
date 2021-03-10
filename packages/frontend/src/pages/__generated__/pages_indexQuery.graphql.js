@@ -101,7 +101,7 @@ return {
     "metadata": null,
     "name": "pages_indexQuery",
     "selections": (v1/*: any*/),
-    "type": "RootQueryType",
+    "type": "Queries",
     "abstractKey": null
   },
   "kind": "Request",

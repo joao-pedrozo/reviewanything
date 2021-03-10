@@ -1,7 +1,8 @@
 import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 
 function fetchQuery(operation, variables) {
-  return fetch(`http://localhost:9000/graphql`, {
+  console.log(process.env.NEXT_PUBLIC_API_URL, 'aasdasdasd');
+  return fetch(process.env.NEXT_PUBLIC_API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

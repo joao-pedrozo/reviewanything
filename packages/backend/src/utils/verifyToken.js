@@ -4,21 +4,20 @@ const verifyToken = (token) => {
   const parts = token.split(' ');
 
   if (parts.length !== 2) {
-    throw new Error('Erro de token.');
+    return false;
   }
   const [scheme, splittedToken] = parts;
 
   if (!/^Bearer$/i.test(scheme)) {
-    throw new Error('Token mal formatado.');
+    return false;
   }
 
   verify(splittedToken, '$!@A61$@!A9D', (error) => {
     if (error) {
-      throw new Error('Token inválido.');
+      return false;
     }
+    return true;
   });
-
-  return true;
 };
 
 export default verifyToken;

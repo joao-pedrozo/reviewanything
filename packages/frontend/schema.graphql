@@ -1,6 +1,6 @@
 schema {
-  query: RootQueryType
-  mutation: Mutation
+  query: Queries
+  mutation: Mutations
 }
 
 """Exposes a URL that specifies the behaviour of this scalar."""
@@ -9,9 +9,20 @@ directive @specifiedBy(
   url: String!
 ) on SCALAR
 
-type Mutation {
-  addReview(title: String, text: String, byUser: String, overall: Int, url: String): Review
+type Auth {
+  user: User
+  token: String
+}
+
+type Mutations {
+  addReview(title: String, text: String, byUser: String, overall: Int, url: String, token: String): Review
   addUser(username: String, name: String, email: String, password: String, imageUrl: String): User
+  auth(email: String, password: String): Auth
+}
+
+type Queries {
+  review(id: String): Review
+  reviews: [Review]
 }
 
 type Review {
@@ -24,11 +35,6 @@ type Review {
   imageUrl: String
   user: User
   createdAt: String
-}
-
-type RootQueryType {
-  review(id: String): Review
-  reviews: [Review]
 }
 
 type User {

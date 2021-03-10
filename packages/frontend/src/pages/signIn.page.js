@@ -5,12 +5,15 @@ import * as Yup from 'yup';
 import { signIn } from 'next-auth/client';
 import Router from 'next/router';
 
-const validationSchema = Yup.object({
-  email: Yup.string().required('Campo obrigatório').email('E-mail inválido'),
-  password: Yup.string().required('Campo obrigatório'),
-});
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const Signin = () => {
+  const validationSchema = Yup.object({
+    email: Yup.string().required('Campo obrigatório').email('E-mail inválido'),
+    password: Yup.string().required('Campo obrigatório'),
+  });
+
   return (
     <PageWrapper>
       <PageContent>
@@ -27,7 +30,10 @@ const Signin = () => {
             });
 
             if (!signInResult.error) {
+              toast.success('🚀 Logado com sucesso!');
               Router.push('/');
+            } else {
+              toast.error(`❌${signInResult.error}`);
             }
           }}
         >

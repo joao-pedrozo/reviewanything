@@ -3,7 +3,7 @@ import { sign } from 'jsonwebtoken';
 import { GraphQLString } from 'graphql';
 import AuthGraphQLType from '../../types/auth';
 
-import User from '../../../models/users';
+import User from '../../../models/user';
 
 const Authmutation = {
   type: AuthGraphQLType,

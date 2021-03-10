@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useQuery } from 'relay-hooks';
 import graphql from 'babel-plugin-relay/macro';
 
+import { useSession } from 'next-auth/client';
 import Review from '../components/ReviewCard';
 import Topbar from '../components/Topbar';
 import SearchReviewArea from '../components/SearchReviewArea';
-
-import { useSession } from 'next-auth/client';
 
 const query = graphql`
   query pages_indexQuery($id: String) {
@@ -25,8 +24,7 @@ function App() {
   });
 
   const [session, loading] = useSession();
-
-  if (data && data.review) {
+  if (data) {
     return (
       <>
         <Topbar />
@@ -34,10 +32,9 @@ function App() {
         <Review data={data} />
       </>
     );
-  } else if (error) {
-    return <div>erro</div>;
+  } else {
+    return <h1>Loading</h1>
   }
-  return <h1> Loading </h1>;
 }
 
 export default App;
