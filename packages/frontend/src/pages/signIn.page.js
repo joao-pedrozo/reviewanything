@@ -8,6 +8,8 @@ import Router from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
+import Button from '../components/Button'
+
 const Signin = () => {
   const validationSchema = Yup.object({
     email: Yup.string().required('Campo obrigatório').email('E-mail inválido'),
@@ -49,7 +51,7 @@ const Signin = () => {
                 <Field id="password" name="password" type="password" />
                 {errors.password && <p>{errors.password}</p>}
               </FormFieldWrapper>
-              <FormSubmitButton type="submit">Entrar</FormSubmitButton>
+              <Button type="submit">Entrar</Button>
             </Form>
           )}
         </Formik>
@@ -88,10 +90,6 @@ const FormFieldWrapper = styled.div`
   p {
     max-width: 100%;
   }
-`;
-
-const FormSubmitButton = styled.button`
-  margin-top: 5px;
 `;
 
 export default Signin;
