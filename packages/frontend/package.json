@@ -29,7 +29,8 @@
   "scripts": {
     "dev:start": "yarn relay-generate && yarn run relay && next dev",
     "relay": "relay-compiler --src ./src/pages --schema ./schema.graphql",
-    "relay-generate": "get-graphql-schema http://127.0.0.1:9000/graphql > ./schema.graphql"
+    "relay-generate": "get-graphql-schema http://127.0.0.1:9000/graphql > ./schema.graphql",
+    "test": "jest"
   },
   "browserslist": {
     "production": [
@@ -47,7 +48,9 @@
     "babel-plugin-relay": "^10.1.3",
     "cz-conventional-changelog": "^3.3.0",
     "graphql": "^15.5.0",
-    "relay-config": "^10.1.2"
+    "relay-config": "^10.1.2",
+    "jest": "^26.5.2",
+    "jest-styled-components": "^7.0.3"
   },
   "config": {
     "commitizen": {
