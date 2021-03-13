@@ -1,6 +1,6 @@
 import { GraphQLList } from 'graphql';
-import ReviewGraphQLType from '../../types/review';
-import Review from '../../../models/review';
+import ReviewGraphQLType from '~/graphql/types/review';
+import Review from '~/models/review';
 
 const ReviewsQuery = {
   type: new GraphQLList(ReviewGraphQLType),

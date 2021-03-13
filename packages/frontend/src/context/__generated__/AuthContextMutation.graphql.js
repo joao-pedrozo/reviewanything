@@ -8,29 +8,35 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type auth_signInMutationVariables = {|
+export type AuthContextMutationVariables = {|
   email?: ?string,
   password?: ?string,
 |};
-export type auth_signInMutationResponse = {|
+export type AuthContextMutationResponse = {|
   +auth: ?{|
-    +token: ?string
+    +token: ?string,
+    +user: ?{|
+      +name: ?string
+    |},
   |}
 |};
-export type auth_signInMutation = {|
-  variables: auth_signInMutationVariables,
-  response: auth_signInMutationResponse,
+export type AuthContextMutation = {|
+  variables: AuthContextMutationVariables,
+  response: AuthContextMutationResponse,
 |};
 */
 
 
 /*
-mutation auth_signInMutation(
+mutation AuthContextMutation(
   $email: String
   $password: String
 ) {
   auth(email: $email, password: $password) {
     token
+    user {
+      name
+    }
   }
 }
 */
@@ -74,6 +80,24 @@ v1 = [
         "kind": "ScalarField",
         "name": "token",
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "User",
+        "kind": "LinkedField",
+        "name": "user",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "name",
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
       }
     ],
     "storageKey": null
@@ -84,29 +108,29 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "auth_signInMutation",
+    "name": "AuthContextMutation",
     "selections": (v1/*: any*/),
-    "type": "Mutation",
+    "type": "Mutations",
     "abstractKey": null
   },
   "kind": "Request",
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "auth_signInMutation",
+    "name": "AuthContextMutation",
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "426f643ee11919b4610556a4fda48578",
+    "cacheID": "bcd8480f24cd241d7cbf4c0e92a410c6",
     "id": null,
     "metadata": {},
-    "name": "auth_signInMutation",
+    "name": "AuthContextMutation",
     "operationKind": "mutation",
-    "text": "mutation auth_signInMutation(\n  $email: String\n  $password: String\n) {\n  auth(email: $email, password: $password) {\n    token\n  }\n}\n"
+    "text": "mutation AuthContextMutation(\n  $email: String\n  $password: String\n) {\n  auth(email: $email, password: $password) {\n    token\n    user {\n      name\n    }\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '26780b3f0414b63651dfa8102cf66f32';
+(node/*: any*/).hash = '7b29de44d0d8dff1759fa1f805b96e79';
 
 module.exports = node;

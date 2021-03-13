@@ -37,7 +37,7 @@ const Authmutation = {
 
     return {
       user: findUserWithEmail,
-      token,
+      token: `Bearer ${token}`,
     };
   },
 };

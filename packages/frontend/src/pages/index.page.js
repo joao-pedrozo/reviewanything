@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from 'relay-hooks';
 import graphql from 'babel-plugin-relay/macro';
 
-import { useSession } from 'next-auth/client';
 import Review from '../components/ReviewCard';
 import Topbar from '../components/Topbar';
 import SearchReviewArea from '../components/SearchReviewArea';
+
+import { useAuth } from '../context/AuthContext';
 
 const query = graphql`
   query pages_indexQuery($id: String) {
@@ -23,7 +24,16 @@ function App() {
     id: '5fff8a86e8687eebfea83e04',
   });
 
-  const [session, loading] = useSession();
+  const { isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    async function teste() {
+      console.log(await isLoggedIn());
+    }
+
+    teste();
+  }, []);
+
   if (data) {
     return (
       <>
@@ -33,7 +43,7 @@ function App() {
       </>
     );
   } else {
-    return <h1>Loading</h1>
+    return <h1>Loading</h1>;
   }
 }
 

@@ -1,7 +1,6 @@
 import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 
 function fetchQuery(operation, variables) {
-  console.log(process.env.NEXT_PUBLIC_API_URL, 'aasdasdasd');
   return fetch(process.env.NEXT_PUBLIC_API_URL, {
     method: 'POST',
     headers: {

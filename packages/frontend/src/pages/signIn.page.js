@@ -2,17 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { signIn } from 'next-auth/client';
 import Router from 'next/router';
-
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+
+import { useAuth } from '../context/AuthContext';
 
 const Signin = () => {
   const validationSchema = Yup.object({
     email: Yup.string().required('Campo obrigatório').email('E-mail inválido'),
     password: Yup.string().required('Campo obrigatório'),
   });
+
+  const { logIn } = useAuth();
 
   return (
     <PageWrapper>
@@ -23,18 +25,7 @@ const Signin = () => {
           initialValues={{ email: '', password: '' }}
           validationSchema={validationSchema}
           onSubmit={async ({ email, password }) => {
-            const signInResult = await signIn('credentials', {
-              email,
-              password,
-              redirect: false,
-            });
-
-            if (!signInResult.error) {
-              toast.success('🚀 Logado com sucesso!');
-              Router.push('/');
-            } else {
-              toast.error(`❌${signInResult.error}`);
-            }
+            const test = await logIn(email, password);
           }}
         >
           {({ errors }) => (

@@ -2,6 +2,7 @@ import { verify } from 'jsonwebtoken';
 
 const verifyToken = (token) => {
   const parts = token.split(' ');
+  let isValid = false;
 
   if (parts.length !== 2) {
     return false;
@@ -13,11 +14,12 @@ const verifyToken = (token) => {
   }
 
   verify(splittedToken, '$!@A61$@!A9D', (error) => {
-    if (error) {
-      return false;
+    if (!error) {
+      isValid = true;
     }
-    return true;
   });
+
+  return isValid;
 };
 
 export default verifyToken;

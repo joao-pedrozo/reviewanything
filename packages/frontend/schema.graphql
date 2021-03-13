@@ -23,6 +23,7 @@ type Mutations {
 type Queries {
   review(id: String): Review
   reviews: [Review]
+  validateToken(token: String): ValidateAuth
 }
 
 type Review {
@@ -45,5 +46,9 @@ type User {
   password: String
   createdAt: String
   imageUrl: String
+}
+
+type ValidateAuth {
+  isValidToken: Boolean
 }
 

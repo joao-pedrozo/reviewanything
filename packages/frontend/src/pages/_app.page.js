@@ -1,27 +1,27 @@
 import { RelayEnvironmentProvider } from 'relay-hooks';
-import { Provider } from 'next-auth/client';
 import relayEnviroment from '../relay/relayEnviroment';
 import { ToastContainer } from 'react-toastify';
+import { AuthProvider } from '../context/AuthContext';
 
 import GlobalStyles from '../styles/global';
 
 export default function App({ Component, pageProps }) {
   return (
     <RelayEnvironmentProvider environment={relayEnviroment}>
-      <Provider session={pageProps.session}>
+      <AuthProvider>
         <Component {...pageProps} />
-        <GlobalStyles />
-        <ToastContainer
-          position="top-right"
-          autoClose={8000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          draggable={false}
-          pauseOnVisibilityChange
-          closeOnClick
-          pauseOnHover
-        />
-      </Provider>
+      </AuthProvider>
+      <GlobalStyles />
+      <ToastContainer
+        position="top-right"
+        autoClose={8000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        draggable={false}
+        pauseOnVisibilityChange
+        closeOnClick
+        pauseOnHover
+      />
     </RelayEnvironmentProvider>
   );
 }

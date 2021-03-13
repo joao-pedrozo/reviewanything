@@ -1,7 +1,7 @@
 import { GraphQLString } from 'graphql';
 import mongoose from 'mongoose';
-import ReviewGraphQLType from '../../types/review';
-import Review from '../../../models/review';
+import ReviewGraphQLType from '~/graphql/types/review';
+import Review from '~/models/review';
 
 const ReviewQuery = {
   type: ReviewGraphQLType,

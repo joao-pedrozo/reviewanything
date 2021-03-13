@@ -28,7 +28,7 @@
   },
   "scripts": {
     "dev:start": "yarn relay-generate && yarn run relay && next dev",
-    "relay": "relay-compiler --src ./src/pages --schema ./schema.graphql",
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql",
     "relay-generate": "get-graphql-schema http://127.0.0.1:9000/graphql > ./schema.graphql"
   },
   "browserslist": {
