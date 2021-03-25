@@ -6,7 +6,8 @@ import Review from '~/models/review';
 const ReviewQuery = {
   type: ReviewGraphQLType,
   args: { id: { type: GraphQLString } },
-  async resolve(parent, args) {
+  async resolve(parent, args, context) {
+    console.log(context);
     const [
       {
         _id,

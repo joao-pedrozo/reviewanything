@@ -3,6 +3,8 @@ import { sign } from 'jsonwebtoken';
 import { GraphQLString } from 'graphql';
 import AuthGraphQLType from '../../types/auth';
 
+import { jwtSecret } from '../../../config';
+
 import User from '../../../models/user';
 
 const Authmutation = {
@@ -29,11 +31,11 @@ const Authmutation = {
       throw new Error('Combinação de e-mail e senha incorreta.');
     }
 
-    const token = sign({ id: findUserWithEmail.id }, '$!@A61$@!A9D', {
+    delete findUserWithEmail.password;
+
+    const token = sign({ user: findUserWithEmail }, jwtSecret, {
       expiresIn: '3d',
     });
-
-    findUserWithEmail.password = null;
 
     return {
       user: findUserWithEmail,

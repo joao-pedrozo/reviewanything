@@ -6,16 +6,34 @@ import graphqlHTTP from 'koa-graphql';
 import schema from './graphql';
 import initDB from './database';
 
+import { getUser } from './auth';
+
 const app = new Koa();
 
 app.use(cors({ origin: '*' }));
 
+// app.use(
+//   mount(
+//     '/graphql',
+//     graphqlHTTP({
+//       schema,
+//       graphiql: true,
+//     }),
+//   ),
+// );
+
 app.use(
   mount(
     '/graphql',
-    graphqlHTTP({
-      schema,
-      graphiql: true,
+    graphqlHTTP(async (req) => {
+      const { user } = await getUser(req.header.authorization);
+      return {
+        schema,
+        graphiql: true,
+        context: {
+          user,
+        },
+      };
     }),
   ),
 );

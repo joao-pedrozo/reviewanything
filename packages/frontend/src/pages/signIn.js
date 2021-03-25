@@ -5,16 +5,38 @@ import * as Yup from 'yup';
 import Router from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import { useMutation } from 'relay-hooks';
+import graphql from 'babel-plugin-relay/macro';
 
-import { useAuth } from '../context/AuthContext';
+const authMutation = graphql`
+  mutation signInMutation($email: String, $password: String) {
+    auth(email: $email, password: $password) {
+      token
+      user {
+        name
+      }
+    }
+  }
+`;
 
 const Signin = () => {
+  const [mutate, { loading, error, data }] = useMutation(authMutation, {
+    onCompleted: ({ auth }) => {
+      toast.success(`Logado com sucesso ${auth.user.name}.`);
+      localStorage.setItem('authToken', auth.token);
+      Router.push('/');
+    },
+    onError: (err) => {
+      toast.error(
+        `Combinação email/senha incorreta, verifique as credenciais.`,
+      );
+    },
+  });
+
   const validationSchema = Yup.object({
     email: Yup.string().required('Campo obrigatório').email('E-mail inválido'),
     password: Yup.string().required('Campo obrigatório'),
   });
-
-  const { logIn } = useAuth();
 
   return (
     <PageWrapper>
@@ -25,7 +47,12 @@ const Signin = () => {
           initialValues={{ email: '', password: '' }}
           validationSchema={validationSchema}
           onSubmit={async ({ email, password }) => {
-            const test = await logIn(email, password);
+            mutate({
+              variables: {
+                email,
+                password,
+              },
+            });
           }}
         >
           {({ errors }) => (

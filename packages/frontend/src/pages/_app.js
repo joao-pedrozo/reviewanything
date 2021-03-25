@@ -1,16 +1,14 @@
 import { RelayEnvironmentProvider } from 'relay-hooks';
 import relayEnviroment from '../relay/relayEnviroment';
 import { ToastContainer } from 'react-toastify';
-import { AuthProvider } from '../context/AuthContext';
 
 import GlobalStyles from '../styles/global';
+import { useEffect } from 'react';
 
 export default function App({ Component, pageProps }) {
   return (
     <RelayEnvironmentProvider environment={relayEnviroment}>
-      <AuthProvider>
-        <Component {...pageProps} />
-      </AuthProvider>
+      <Component {...pageProps} />
       <GlobalStyles />
       <ToastContainer
         position="top-right"

@@ -1,5 +1,5 @@
 import review from './review';
 import reviews from './reviews';
-import validateToken from './validateToken';
+import me from './me';
 
-export { review, reviews, validateToken };
+export { review, reviews, me };

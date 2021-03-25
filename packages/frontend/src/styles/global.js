@@ -17,6 +17,14 @@ const GlobalStyles = createGlobalStyle`
     }
     a {
         cursor: pointer;
+        text-decoration: none;
+        color: #e74c3c;
+    }
+
+    .DraftEditor-root ~ div {
+        div {
+            display: flex;
+        }
     }
 `;
 

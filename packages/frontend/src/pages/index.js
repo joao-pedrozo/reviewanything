@@ -6,8 +6,6 @@ import Review from '../components/ReviewCard';
 import Topbar from '../components/Topbar';
 import SearchReviewArea from '../components/SearchReviewArea';
 
-import { useAuth } from '../context/AuthContext';
-
 const query = graphql`
   query pages_indexQuery($id: String) {
     review(id: $id) {
@@ -20,26 +18,16 @@ const query = graphql`
 `;
 
 function App() {
-  const { data, error, retry, isLoading } = useQuery(query, {
+  const reviewData = useQuery(query, {
     id: '5fff8a86e8687eebfea83e04',
   });
 
-  const { isLoggedIn } = useAuth();
-
-  useEffect(() => {
-    async function teste() {
-      console.log(await isLoggedIn());
-    }
-
-    teste();
-  }, []);
-
-  if (data) {
+  if (reviewData.data) {
     return (
       <>
         <Topbar />
         <SearchReviewArea />
-        <Review data={data} />
+        <Review data={reviewData.data} />
       </>
     );
   } else {

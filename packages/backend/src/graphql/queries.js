@@ -1,13 +1,13 @@
 import { GraphQLObjectType } from 'graphql';
 
-import { review, reviews, validateToken } from './modules/queries';
+import { review, reviews, me } from './modules/queries';
 
 const Queries = new GraphQLObjectType({
   name: 'Queries',
   fields: {
     review,
     reviews,
-    validateToken,
+    me,
   },
 });
 

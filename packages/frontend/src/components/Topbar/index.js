@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import graphql from 'babel-plugin-relay/macro';
+import { useQuery } from 'relay-hooks';
+import 'draft-js/dist/Draft.css';
 
 import { AiOutlineUser } from 'react-icons/ai';
 
+const meQuery = graphql`
+  query Topbar_meQuery {
+    me {
+      username
+    }
+  }
+`;
+
 const TopBar = () => {
+  const { data } = useQuery(meQuery);
+
   return (
     <MainWrapper>
       <LogoWrapper>
@@ -11,10 +24,18 @@ const TopBar = () => {
         <LogoAnythingTerm>anything</LogoAnythingTerm>
       </LogoWrapper>
 
-      <SignArea href="/signUp">
-        <AiOutlineUser size={28} />
-        <SignUpText>Entrar</SignUpText>
-      </SignArea>
+      {data && data.me ? (
+        <PostReviewArea href="/postReview">
+          <AiOutlineUser size={28} />
+          <p>{data.me.username}</p>
+          <p href="/postReview">Postar review</p>
+        </PostReviewArea>
+      ) : (
+        <SignArea href="/signUp">
+          <AiOutlineUser size={28} />
+          <SignUpText>Entrar</SignUpText>
+        </SignArea>
+      )}
     </MainWrapper>
   );
 };
@@ -57,5 +78,13 @@ const SignArea = styled.a`
 const SignUpText = styled.p`
   font-size: 16px;
 `;
+
+const PostReviewArea = styled.a`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const PostReviewLink = styled.p``;
 
 export default TopBar;
